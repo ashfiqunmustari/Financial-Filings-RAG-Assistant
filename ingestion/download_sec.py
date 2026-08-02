@@ -30,6 +30,8 @@ if tenk is None:
     raise Exception("No 10-K found.")
 print("Latest 10-K found:")
 print(tenk)
+print("\nPrimary document:", tenk["document"])
+print("Ends with:", Path(tenk["document"]).suffix)
 accession_no_dash = tenk["accession"].replace("-", "")
 
 filing_url = (
