@@ -1,0 +1,71 @@
+<svg width="100%" viewBox="0 0 680 720" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Financial Filings RAG architecture</title>
+<desc>Offline pipeline builds a FAISS index from a SEC 10-K filing; online pipeline retrieves chunks and generates a grounded answer shown in the UI.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+<style>
+text { font-family: -apple-system, Segoe UI, Roboto, sans-serif; }
+.th { font-size: 14px; font-weight: 500; fill: #1A2027; }
+.ts { font-size: 12px; fill: #5F5E5A; }
+.arr { stroke: #888780; stroke-width: 1.5; }
+.leader { stroke: #888780; stroke-width: 1.5; stroke-dasharray: 4 4; }
+</style>
+
+<text class="th" x="240" y="34" text-anchor="middle">Offline — build the index (once)</text>
+
+<rect x="140" y="50" width="200" height="44" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="0.5"/>
+<text class="th" x="240" y="72" text-anchor="middle" dominant-baseline="central">SEC EDGAR</text>
+<line x1="240" y1="94" x2="240" y2="122" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="140" y="122" width="200" height="44" rx="8" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
+<text class="th" x="240" y="144" text-anchor="middle" dominant-baseline="central">Download 10-K</text>
+<line x1="240" y1="166" x2="240" y2="194" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="140" y="194" width="200" height="56" rx="8" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
+<text class="th" x="240" y="214" text-anchor="middle" dominant-baseline="central">Clean text</text>
+<text class="ts" x="240" y="234" text-anchor="middle" dominant-baseline="central">8.5M chars to 271K</text>
+<line x1="240" y1="250" x2="240" y2="278" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="140" y="278" width="200" height="56" rx="8" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
+<text class="th" x="240" y="298" text-anchor="middle" dominant-baseline="central">Chunk by section</text>
+<text class="ts" x="240" y="318" text-anchor="middle" dominant-baseline="central">98 chunks, overlap</text>
+<line x1="240" y1="334" x2="240" y2="362" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="140" y="362" width="200" height="56" rx="8" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
+<text class="th" x="240" y="382" text-anchor="middle" dominant-baseline="central">Embed chunks</text>
+<text class="ts" x="240" y="402" text-anchor="middle" dominant-baseline="central">Sentence Transformers</text>
+<line x1="240" y1="418" x2="240" y2="446" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="140" y="446" width="200" height="44" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text class="th" x="240" y="468" text-anchor="middle" dominant-baseline="central">FAISS index</text>
+
+<text class="th" x="240" y="556" text-anchor="middle">Online — answer a question</text>
+
+<rect x="140" y="572" width="200" height="44" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="0.5"/>
+<text class="th" x="240" y="594" text-anchor="middle" dominant-baseline="central">User question</text>
+<line x1="240" y1="616" x2="240" y2="640" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="140" y="642" width="200" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text class="th" x="240" y="662" text-anchor="middle" dominant-baseline="central">Retrieve chunks</text>
+<text class="ts" x="240" y="682" text-anchor="middle" dominant-baseline="central">threshold filter 1.5</text>
+<line x1="340" y1="670" x2="418" y2="670" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="420" y="642" width="200" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text class="th" x="520" y="662" text-anchor="middle" dominant-baseline="central">LLM generation</text>
+<text class="ts" x="520" y="682" text-anchor="middle" dominant-baseline="central">Llama 3.1 (HF API)</text>
+<line x1="520" y1="642" x2="520" y2="620" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="420" y="562" width="200" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text class="th" x="520" y="582" text-anchor="middle" dominant-baseline="central">Grounded answer</text>
+<text class="ts" x="520" y="602" text-anchor="middle" dominant-baseline="central">with sources</text>
+<line x1="520" y1="562" x2="520" y2="532" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="420" y="474" width="200" height="56" rx="8" fill="#FBEAF0" stroke="#993556" stroke-width="0.5"/>
+<text class="th" x="520" y="494" text-anchor="middle" dominant-baseline="central">Streamlit UI</text>
+<text class="ts" x="520" y="514" text-anchor="middle" dominant-baseline="central">via FastAPI</text>
+
+<path d="M340 468 L620 468 L620 474" fill="none" class="leader" marker-end="url(#arrow)"/>
+</svg>
