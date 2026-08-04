@@ -7,7 +7,7 @@ if not USE_API:
     import sys
     from pathlib import Path
     sys.path.append(str(Path(__file__).resolve().parent.parent / "app"))
-    from app.rag import answer_question
+    from rag import answer_question
 
 def get_answer(question):
     if USE_API:

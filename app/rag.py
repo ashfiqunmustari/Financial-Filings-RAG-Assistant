@@ -1,5 +1,5 @@
-from app.retrieval import retrieve
-from app.llm import generate_answer
+from retrieval import retrieve
+from llm import generate_answer
 
 
 def answer_question(question):
