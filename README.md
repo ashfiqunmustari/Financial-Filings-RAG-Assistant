@@ -26,7 +26,7 @@ The answer is generated only from the retrieved filing content, and the relevant
 [Live demo](https://financial-filings-rag-assistant.streamlit.app/)
 
 ## How it works
-
+![Architecture](docs/architecture.svg)
 The system has an offline stage (build the knowledge base once) and an online stage (answer questions).
 
 **Offline — building the index:**
@@ -50,42 +50,6 @@ The system has an offline stage (build the knowledge base once) and an online st
 - **Data:** SEC EDGAR
 
 ## Architecture
-SEC EDGAR
-        │
-        ▼
-Download 10-K Filing
-        │
-        ▼
-Text Extraction
-        │
-        ▼
-Data Cleaning
-        │
-        ▼
-Semantic Chunking
-        │
-        ▼
-Sentence Embeddings
-        │
-        ▼
-FAISS Index
-        │
-User Q──┘
-        │
-        ▼
-Semantic Retrieval
-        │
-        ▼
-Retrieved Chunks
-        │
-        ▼
-LLM (HF API)
-        │
-        ▼
-Grounded Response
-        │
-        ▼
-Streamlit UI
 
 ## Tech Stack
 
