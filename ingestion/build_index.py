@@ -56,7 +56,6 @@ with open(
         indent=2,
         ensure_ascii=False
     )
-print("\nDone!")
 print(f"Vectors indexed : {index.ntotal}")
 print(f"Saved index     : {INDEX_FILE}")
 print(f"Saved metadata  : {METADATA_FILE}")
