@@ -23,7 +23,7 @@ A question-answering system over SEC 10-K filings. Ask a question in plain Engli
 
 The answer is generated only from the retrieved filing content, and the relevant source sections are shown alongside it.
 
-[Live demo]([https://financial-filings-rag-assistant.streamlit.app/])
+[Live demo](https://financial-filings-rag-assistant.streamlit.app/)
 
 ## How it works
 
@@ -144,7 +144,7 @@ financial-filings-rag/
 ├── requirements.txt
 ├── .env
 └── README.md
-
+```
 ## Future Improvements
 
 - Multi-company support (Apple, NVIDIA, Meta, Alphabet, Amazon)
