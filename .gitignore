@@ -12,5 +12,4 @@ __pycache__/
 .vscode/
 
 # Generated data (optional)
-data/faiss/
 data/processed/chunks.json
