@@ -26,7 +26,7 @@ The answer is generated only from the retrieved filing content, and the relevant
 [Live demo](https://financial-filings-rag-assistant.streamlit.app/)
 
 ## How it works
-![Architecture](docs/architecture.svg)
+![Architecture](asset/architecture.svg)
 The system has an offline stage (build the knowledge base once) and an online stage (answer questions).
 
 **Offline — building the index:**
